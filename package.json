@@ -20,7 +20,10 @@
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
     "@ngneat/tailwind": "^7.0.3",
+    "ngx-spinner": "^11.0.1",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
+    "subsink": "^1.0.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
