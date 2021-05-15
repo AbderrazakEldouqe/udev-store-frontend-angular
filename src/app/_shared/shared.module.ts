@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { CardShowComponent } from './components/card-show/card-show.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CardShowComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -19,6 +20,6 @@ import { ToastrModule } from 'ngx-toastr';
     // }),
     RouterModule,
   ],
-  exports: [ReactiveFormsModule, FormsModule],
+  exports: [ReactiveFormsModule, FormsModule, CardShowComponent],
 })
 export class SharedModule {}

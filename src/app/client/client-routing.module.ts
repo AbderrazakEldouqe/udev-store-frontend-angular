@@ -18,14 +18,14 @@ const routes: Routes = [
           (await import('./categorie/categorie.module')).CategorieModule,
       },
       {
-        path: 'sous-categorie',
+        path: 'sous-categorie/:id',
         loadChildren: async () =>
           (await import('./sous-categorie/sous-categorie.module'))
             .SousCategorieModule,
         data: { animation: 'isRight' },
       },
       {
-        path: 'product',
+        path: 'product/:id',
         loadChildren: async () =>
           (await import('./product/product.module')).ProductModule,
         data: { animation: 'isRight' },

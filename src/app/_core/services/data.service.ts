@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private url: string, private http: HttpClient) {}
+  constructor(private url: string, public http: HttpClient) {}
 
   getAll(headersObject = {}): Observable<any> {
     return this.http.get(this.url, { headers: headersObject });
