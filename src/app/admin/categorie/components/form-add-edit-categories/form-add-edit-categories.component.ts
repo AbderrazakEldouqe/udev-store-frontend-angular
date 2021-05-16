@@ -27,11 +27,15 @@ export class FormAddEditCategoriesComponent implements OnInit, OnChanges {
   constructor(private jsService: JsService) {}
 
   ngOnInit(): void {
-    //this.initialFormGroupe();
+    this.initialFormGroupe();
   }
   initialFormGroupe(): void {
     this.form = new FormGroup({
       name: new FormControl(null, [Validators.required]),
+      image: new FormControl(
+        'https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80',
+        [Validators.required]
+      ),
     });
   }
 
@@ -52,6 +56,8 @@ export class FormAddEditCategoriesComponent implements OnInit, OnChanges {
     if (this.categorie) {
       this.form.patchValue({
         name: this.categorie.name,
+        image:
+          'https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80',
       });
     }
   }
@@ -68,7 +74,7 @@ export class FormAddEditCategoriesComponent implements OnInit, OnChanges {
   }
 
   back(): void {
-    //this.form.reset();
+    this.form.reset();
     this.backToListEvent.emit();
   }
 }

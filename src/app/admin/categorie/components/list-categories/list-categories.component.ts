@@ -7,6 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Categorie } from 'src/app/_core/models/categorie';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-categories',
@@ -39,7 +40,7 @@ export class ListCategoriesComponent implements OnInit {
   }
 
   delete(categorie: Categorie): void {
-    /*Swal.fire({
+    Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this imaginary file!',
       icon: 'warning',
@@ -52,7 +53,7 @@ export class ListCategoriesComponent implements OnInit {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
-    });*/
+    });
   }
 
   trackById(index, item): any {

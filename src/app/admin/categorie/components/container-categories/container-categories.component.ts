@@ -58,7 +58,7 @@ export class ContainerCategoriesComponent implements OnInit, OnDestroy {
 
   update(categorie: Categorie): void {
     const id = categorie.id;
-    categorie = this.jsService.deleteElementFromObjectByKey(categorie, 'id');
+    //categorie = this.jsService.deleteElementFromObjectByKey(categorie, 'id');
     this.subs.add(
       this.categorieService
         .update(id, categorie)
