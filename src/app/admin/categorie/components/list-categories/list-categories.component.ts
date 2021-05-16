@@ -19,6 +19,13 @@ export class ListCategoriesComponent implements OnInit {
   @Output() createEvent = new EventEmitter();
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
+
+  config = {
+    id: 'custom',
+    itemsPerPage: 5,
+    currentPage: 1,
+    totalItems: this.categories.length,
+  };
   constructor() {}
 
   ngOnInit(): void {}
