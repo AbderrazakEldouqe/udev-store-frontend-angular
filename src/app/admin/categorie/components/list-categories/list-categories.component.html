@@ -39,6 +39,7 @@
                   id="email"
                   class="w-full py-2 pl-10 text-sm text-black placeholder-gray-500 border border-gray-200 rounded-none  focus:border-light-blue-500 focus:ring-1 focus:ring-light-blue-500 focus:outline-none rounded-l-md"
                   placeholder="Search"
+                  [(ngModel)]="filter"
                 />
               </div>
               <button
@@ -89,7 +90,9 @@
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr
                   *ngFor="
-                    let categorie of categories | paginate: config;
+                    let categorie of categories
+                      | filter: filter
+                      | paginate: config;
                     let i = index;
                     trackBy: trackById
                   "
@@ -131,7 +134,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr *ngIf="categories.length === 0">
+                <tr *ngIf="(categories | filter: filter).length === 0">
                   <td colspan="2" class="text-center">
                     No matching records found
                   </td>

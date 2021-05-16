@@ -26,6 +26,7 @@ export class ListCategoriesComponent implements OnInit {
     currentPage: 1,
     totalItems: this.categories.length,
   };
+  filter = '';
   constructor() {}
 
   ngOnInit(): void {}
