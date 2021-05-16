@@ -4,5 +4,5 @@ export interface SubCategorie {
   id?: number;
   name: String;
   image: String;
-  categorie: Categorie;
+  category: Categorie;
 }

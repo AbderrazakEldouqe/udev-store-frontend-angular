@@ -1,2 +1,16 @@
-<p>container-categories works!</p>
-<app-list-categories></app-list-categories>
+<app-form-add-edit-categories
+  [hidden]="!formIsShow"
+  [categorie]="selectedCategorie"
+  (storeEvent)="store($event)"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-add-edit-categories>
+
+<app-list-categories
+  [hidden]="formIsShow"
+  [categories]="categories"
+  (createEvent)="showForm()"
+  (editEvent)="edit($event)"
+  (deleteEvent)="delete($event)"
+></app-list-categories>

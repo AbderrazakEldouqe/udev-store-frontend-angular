@@ -1,1 +1,16 @@
-<p>container-sous-categories works!</p>
+<app-form-add-edit-sous-categories
+  [hidden]="!formIsShow"
+  [subCategorie]="selectedSubCategorie"
+  (storeEvent)="store($event)"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-add-edit-sous-categories>
+
+<app-list-sous-categories
+  [hidden]="formIsShow"
+  [subCategories]="subCategories"
+  (createEvent)="showForm()"
+  (editEvent)="edit($event)"
+  (deleteEvent)="delete($event)"
+></app-list-sous-categories>

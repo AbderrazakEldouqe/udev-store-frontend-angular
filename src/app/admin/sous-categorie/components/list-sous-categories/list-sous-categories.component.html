@@ -1,1 +1,252 @@
-<p>list-sous-categories works!</p>
+<div class="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+  <!-- Replace with your content -->
+  <!-- This example requires Tailwind CSS v2.0+ -->
+  <div class="pt-3 bg-white rounded-lg shadow">
+    <div
+      class="px-4 pt-4 pb-4 space-y-4  sm:px-6 lg:px-4 xl:px-6 sm:pb-6 lg:pb-4 xl:pb-6"
+    >
+      <div
+        class="pb-5 border-b border-gray-200  sm:flex sm:items-center sm:justify-between"
+      >
+        <h3 class="text-lg font-medium leading-6 text-gray-900">List</h3>
+        <div class="mt-3 sm:mt-0 sm:ml-4">
+          <div>
+            <div class="flex mt-1 rounded-md shadow-sm">
+              <div
+                class="relative flex items-stretch flex-grow focus-within:z-10"
+              >
+                <div
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
+                >
+                  <svg
+                    class="w-5 h-5 text-gray-400"
+                    x-description="Heroicon name: solid/search"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  class="w-full py-2 pl-10 text-sm text-black placeholder-gray-500 border border-gray-200 rounded-none  focus:border-light-blue-500 focus:ring-1 focus:ring-light-blue-500 focus:outline-none rounded-l-md"
+                  placeholder="Search"
+                />
+              </div>
+              <button
+                (click)="create()"
+                class="relative inline-flex items-center px-4 py-2 -ml-px space-x-2 text-sm font-medium text-gray-700 border border-gray-300  rounded-r-md bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              >
+                <svg
+                  class="mr-2  group-hover:text-light-blue-600 text-light-blue-500"
+                  width="12"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"
+                  />
+                </svg>
+                New
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div
+            class="overflow-hidden border-b border-gray-200 shadow  sm:rounded-lg"
+          >
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
+                  >
+                    Categorie Name
+                  </th>
+                  <th scope="col" class="relative px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr
+                  *ngFor="
+                    let subCategorie of subCategories;
+                    let i = index;
+                    trackBy: trackById
+                  "
+                  [ngClass]="{
+                    'bg-gray-50': i % 2 != 0
+                  }"
+                >
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 w-10 h-10">
+                        <img
+                          class="w-10 h-10 rounded-full"
+                          src="{{ subCategorie?.image }}"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">
+                          {{ subCategorie?.name }}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">
+                      {{ subCategorie?.category?.name }}
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-right  whitespace-nowrap"
+                  >
+                    <button
+                      (click)="edit(subCategorie)"
+                      class="mr-2 text-indigo-600 hover:text-indigo-900"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      (click)="delete(subCategorie)"
+                      class="text-red-600 hover:text-red-900"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="subCategories.length === 0">
+                  <td colspan="3" class="pt-4 text-center">
+                    No matching records found
+                  </td>
+                </tr>
+                <!-- More people... -->
+              </tbody>
+            </table>
+            <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <nav
+                class="flex items-center justify-between px-4 border-t border-gray-200  sm:px-0"
+              >
+                <div class="flex flex-1 w-0 -mt-px">
+                  <a
+                    href="#"
+                    class="inline-flex items-center pt-4 pr-1 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    <svg
+                      class="w-5 h-5 mr-3 text-gray-400"
+                      x-description="Heroicon name: solid/arrow-narrow-left"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    Previous
+                  </a>
+                </div>
+                <div class="hidden md:-mt-px md:flex">
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    1
+                  </a>
+                  <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-indigo-600 border-t-2 border-indigo-500 "
+                    aria-current="page"
+                  >
+                    2
+                  </a>
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    3
+                  </a>
+                  <span
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent "
+                  >
+                    ...
+                  </span>
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    8
+                  </a>
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    9
+                  </a>
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    10
+                  </a>
+                </div>
+                <div class="flex justify-end flex-1 w-0 -mt-px">
+                  <a
+                    href="#"
+                    class="inline-flex items-center pt-4 pl-1 text-sm font-medium text-gray-500 border-t-2 border-transparent  hover:text-gray-700 hover:border-gray-300"
+                  >
+                    Next
+                    <svg
+                      class="w-5 h-5 ml-3 text-gray-400"
+                      x-description="Heroicon name: solid/arrow-narrow-right"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /End replace -->
+</div>
