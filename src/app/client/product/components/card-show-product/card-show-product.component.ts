@@ -1,3 +1,4 @@
+import { BasketService } from './../../../basket/services/basket.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/_core/models/product';
 
@@ -8,7 +9,13 @@ import { Product } from 'src/app/_core/models/product';
 })
 export class CardShowProductComponent implements OnInit {
   @Input() product: Product | null = null;
-  constructor() {}
+  constructor(private basketService: BasketService) {}
 
   ngOnInit(): void {}
+
+  addProductToBasket(product: Product) {
+    let cpt = this.basketService.getProductsFromLocalStorage().length;
+    this.basketService.addProductToBasket(product);
+    this.basketService.changebasketCount(cpt + 1);
+  }
 }

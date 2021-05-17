@@ -5,164 +5,62 @@
         <div class="gap-2 md:grid md:grid-cols-3">
           <div class="col-span-2 p-5">
             <h1 class="text-xl font-medium">Shopping Cart</h1>
-            <div class="flex items-center justify-between pt-6 mt-6">
-              <div class="flex items-center">
-                <img
-                  src="https://i.imgur.com/EEguU02.jpg"
-                  width="60"
-                  class="rounded-full"
-                />
-                <div class="flex flex-col ml-3">
-                  <span class="font-medium md:text-md">Chicken momo</span>
-                  <span class="text-xs font-light text-gray-400">#41551</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-center">
-                <div class="flex pr-8">
-                  <span class="font-semibold">-</span>
-                  <input
-                    type="text"
-                    class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
-                    value="1"
+
+            <div *ngIf="basket.length > 0">
+              <div
+                *ngFor="let product of basket"
+                class="flex items-center justify-between pt-6 mt-6 border-t"
+              >
+                <div class="flex items-center">
+                  <img
+                    src="{{ product?.image }}"
+                    width="60"
+                    class="rounded-full"
                   />
-                  <span class="font-semibold">+</span>
+                  <div class="flex flex-col ml-3">
+                    <span class="font-medium text-md">{{ product?.name }}</span>
+                  </div>
                 </div>
-                <div class="pr-8">
-                  <span class="text-xs font-medium">$10.50</span>
+                <div class="flex items-center justify-center">
+                  <div class="flex pr-8">
+                    <span class="font-semibold">-</span>
+                    <input
+                      type="text"
+                      class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
+                      value="1"
+                    />
+                    <span class="font-semibold">+</span>
+                  </div>
+                  <div class="pr-8">
+                    <span class="text-xs font-medium"
+                      >${{ product?.price }}</span
+                    >
+                  </div>
+                  <div><i class="text-xs font-medium fa fa-close"></i></div>
                 </div>
-                <div><i class="text-xs font-medium fa fa-close"></i></div>
               </div>
             </div>
-            <div class="flex items-center justify-between pt-6 mt-6 border-t">
-              <div class="flex items-center">
-                <img
-                  src="https://i.imgur.com/Uv2Yqzo.jpg"
-                  width="60"
-                  class="rounded-full"
-                />
-                <div class="flex flex-col ml-3">
-                  <span class="w-auto font-medium text-md"
-                    >Spicy Mexican potatoes</span
-                  >
-                  <span class="text-xs font-light text-gray-400">#66999</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-center">
-                <div class="flex pr-8">
-                  <span class="font-semibold">-</span>
-                  <input
-                    type="text"
-                    class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
-                    value="1"
-                  />
-                  <span class="font-semibold">+</span>
-                </div>
-                <div class="pr-8">
-                  <span class="text-xs font-medium">$10.50</span>
-                </div>
-                <div><i class="text-xs font-medium fa fa-close"></i></div>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-6 mt-6 border-t">
-              <div class="flex items-center">
-                <img
-                  src="https://i.imgur.com/Uv2Yqzo.jpg"
-                  width="60"
-                  class="rounded-full"
-                />
-                <div class="flex flex-col ml-3">
-                  <span class="w-auto font-medium text-md"
-                    >Spicy Mexican potatoes</span
-                  >
-                  <span class="text-xs font-light text-gray-400">#66999</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-center">
-                <div class="flex pr-8">
-                  <span class="font-semibold">-</span>
-                  <input
-                    type="text"
-                    class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
-                    value="1"
-                  />
-                  <span class="font-semibold">+</span>
-                </div>
-                <div class="pr-8">
-                  <span class="text-xs font-medium">$10.50</span>
-                </div>
-                <div><i class="text-xs font-medium fa fa-close"></i></div>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-6 mt-6 border-t">
-              <div class="flex items-center">
-                <img
-                  src="https://i.imgur.com/Uv2Yqzo.jpg"
-                  width="60"
-                  class="rounded-full"
-                />
-                <div class="flex flex-col ml-3">
-                  <span class="w-auto font-medium text-md"
-                    >Spicy Mexican potatoes</span
-                  >
-                  <span class="text-xs font-light text-gray-400">#66999</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-center">
-                <div class="flex pr-8">
-                  <span class="font-semibold">-</span>
-                  <input
-                    type="text"
-                    class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
-                    value="1"
-                  />
-                  <span class="font-semibold">+</span>
-                </div>
-                <div class="pr-8">
-                  <span class="text-xs font-medium">$10.50</span>
-                </div>
-                <div><i class="text-xs font-medium fa fa-close"></i></div>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-6 mt-6 border-t">
-              <div class="flex items-center">
-                <img
-                  src="https://i.imgur.com/xbTAITF.jpg"
-                  width="60"
-                  class="rounded-full"
-                />
-                <div class="flex flex-col ml-3">
-                  <span class="font-medium text-md">Breakfast</span>
-                  <span class="text-xs font-light text-gray-400">#86577</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-center">
-                <div class="flex pr-8">
-                  <span class="font-semibold">-</span>
-                  <input
-                    type="text"
-                    class="w-8 h-6 px-2 mx-2 text-sm bg-gray-100 border rounded  focus:outline-none"
-                    value="1"
-                  />
-                  <span class="font-semibold">+</span>
-                </div>
-                <div class="pr-8">
-                  <span class="text-xs font-medium">$10.50</span>
-                </div>
-                <div><i class="text-xs font-medium fa fa-close"></i></div>
-              </div>
+
+            <div
+              *ngIf="basket.length === 0"
+              class="flex items-center justify-center pt-6 mt-6 border-t"
+            >
+              <p class="text-center">panier est vide</p>
             </div>
             <div class="flex items-center justify-between pt-6 mt-6 border-t">
               <div class="flex items-center">
                 <i class="pr-2 text-sm fa fa-arrow-left"></i>
-                <span class="font-medium text-blue-500 text-md"
-                  >Continue Shopping</span
-                >
               </div>
-              <div class="flex items-end justify-center">
+              <div
+                *ngIf="basket.length > 0"
+                class="flex items-end justify-center"
+              >
                 <span class="mr-1 text-sm font-medium text-gray-400"
                   >Subtotal:</span
                 >
-                <span class="text-lg font-bold text-gray-800"> $24.90</span>
+                <span class="text-lg font-bold text-gray-800">
+                  ${{ subTotal }}</span
+                >
               </div>
             </div>
           </div>
@@ -245,6 +143,7 @@
               </div>
             </div>
             <button
+              (click)="checkout()"
               class="absolute inset-x-0 bottom-0 w-full h-12 my-5 text-white bg-blue-500 rounded  focus:outline-none hover:bg-blue-600"
             >
               Check Out
