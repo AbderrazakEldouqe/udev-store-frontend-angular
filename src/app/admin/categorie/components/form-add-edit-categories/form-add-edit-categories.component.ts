@@ -1,5 +1,7 @@
+import { NotificationService } from 'src/app/_core/services/notification.service';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -24,7 +26,14 @@ export class FormAddEditCategoriesComponent implements OnInit, OnChanges {
   @Input() categorie: Categorie | null = null;
   form: FormGroup;
   @Output() backToListEvent = new EventEmitter();
-  constructor(private jsService: JsService) {}
+  file: File;
+  defaultImage = '../../../../../assets/default-upload/default.png';
+  imageUrl: string | ArrayBuffer = this.defaultImage;
+  constructor(
+    private jsService: JsService,
+    private notificationService: NotificationService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.initialFormGroupe();
@@ -72,7 +81,34 @@ export class FormAddEditCategoriesComponent implements OnInit, OnChanges {
     this.form.reset();
     this.categorie = null;
   }
+  onChange(file: File): void {
+    if (file) {
+      if (!this.validateFile(file.name)) {
+        this.notificationService.error(
+          'Selected file format is not supported',
+          'image'
+        );
+        this.form.patchValue({ image: null });
+      } else {
+        this.file = file;
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          this.imageUrl = reader.result;
+          this.cd.markForCheck();
+        };
+      }
+    }
+  }
 
+  validateFile(name: string): boolean {
+    const ext = name.substring(name.lastIndexOf('.') + 1);
+    return (
+      ext.toLowerCase() === 'png' ||
+      ext.toLowerCase() === 'jpg' ||
+      ext.toLowerCase() === 'jpeg'
+    );
+  }
   back(): void {
     this.form.reset();
     this.backToListEvent.emit();

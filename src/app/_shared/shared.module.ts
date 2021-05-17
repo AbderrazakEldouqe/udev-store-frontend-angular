@@ -6,9 +6,10 @@ import { CardShowComponent } from './components/card-show/card-show.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationsComponent } from './components/paginations/paginations.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DragDropDirective } from './derictives/drag-drop.directive';
 
 @NgModule({
-  declarations: [CardShowComponent, PaginationsComponent],
+  declarations: [CardShowComponent, PaginationsComponent, DragDropDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,

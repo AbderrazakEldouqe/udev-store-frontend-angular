@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -11,6 +12,7 @@ import { CategorieService } from 'src/app/client/categorie/services/categorie.se
 import { Categorie } from 'src/app/_core/models/categorie';
 import { SubCategorie } from 'src/app/_core/models/sub-categorie';
 import { JsService } from 'src/app/_core/services/js.service';
+import { NotificationService } from 'src/app/_core/services/notification.service';
 
 @Component({
   selector: 'app-form-add-edit-sous-categories',
@@ -24,9 +26,14 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
   categories: Categorie[] = [];
   form: FormGroup;
   @Output() backToListEvent = new EventEmitter();
+  file: File;
+  defaultImage = '../../../../../assets/default-upload/default.png';
+  imageUrl: string | ArrayBuffer = this.defaultImage;
   constructor(
     private jsService: JsService,
-    private categorieService: CategorieService
+    private categorieService: CategorieService,
+    private notificationService: NotificationService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -98,6 +105,34 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
     this.subCategorie = null;
   }
 
+  onChange(file: File): void {
+    if (file) {
+      if (!this.validateFile(file.name)) {
+        this.notificationService.error(
+          'Selected file format is not supported',
+          'image'
+        );
+        this.form.patchValue({ image: null });
+      } else {
+        this.file = file;
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          this.imageUrl = reader.result;
+          this.cd.markForCheck();
+        };
+      }
+    }
+  }
+
+  validateFile(name: string): boolean {
+    const ext = name.substring(name.lastIndexOf('.') + 1);
+    return (
+      ext.toLowerCase() === 'png' ||
+      ext.toLowerCase() === 'jpg' ||
+      ext.toLowerCase() === 'jpeg'
+    );
+  }
   back(): void {
     this.form.reset();
     this.backToListEvent.emit();
