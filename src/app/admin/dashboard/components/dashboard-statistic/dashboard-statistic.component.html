@@ -31,11 +31,11 @@
               <div class="flex-1 w-0 ml-5">
                 <dl>
                   <dt class="text-sm font-medium text-gray-500 truncate">
-                    Account balance
+                    Categories
                   </dt>
                   <dd>
                     <div class="text-lg font-medium text-gray-900">
-                      $30,659.45
+                      {{ categories.length }}
                     </div>
                   </dd>
                 </dl>
@@ -44,7 +44,10 @@
           </div>
           <div class="px-5 py-3 bg-gray-50">
             <div class="text-sm">
-              <a href="#" class="font-medium text-cyan-700 hover:text-cyan-900">
+              <a
+                routerLink="/admin/categorie"
+                class="font-medium text-cyan-700 hover:text-cyan-900"
+              >
                 View all
               </a>
             </div>
@@ -75,11 +78,11 @@
               <div class="flex-1 w-0 ml-5">
                 <dl>
                   <dt class="text-sm font-medium text-gray-500 truncate">
-                    Pending
+                    Sub Categories
                   </dt>
                   <dd>
                     <div class="text-lg font-medium text-gray-900">
-                      -$19,500.00
+                      {{ subCategories.length }}
                     </div>
                   </dd>
                 </dl>
@@ -88,7 +91,10 @@
           </div>
           <div class="px-5 py-3 bg-gray-50">
             <div class="text-sm">
-              <a href="#" class="font-medium text-cyan-700 hover:text-cyan-900">
+              <a
+                routerLink="/admin/sub-catgorie"
+                class="font-medium text-cyan-700 hover:text-cyan-900"
+              >
                 View all
               </a>
             </div>
@@ -119,10 +125,12 @@
               <div class="flex-1 w-0 ml-5">
                 <dl>
                   <dt class="text-sm font-medium text-gray-500 truncate">
-                    Processed (last 30 days)
+                    products
                   </dt>
                   <dd>
-                    <div class="text-lg font-medium text-gray-900">$20,000</div>
+                    <div class="text-lg font-medium text-gray-900">
+                      {{ products.length }}
+                    </div>
                   </dd>
                 </dl>
               </div>
@@ -130,7 +138,10 @@
           </div>
           <div class="px-5 py-3 bg-gray-50">
             <div class="text-sm">
-              <a href="#" class="font-medium text-cyan-700 hover:text-cyan-900">
+              <a
+                routerLink="/admin/product"
+                class="font-medium text-cyan-700 hover:text-cyan-900"
+              >
                 View all
               </a>
             </div>
