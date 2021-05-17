@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService extends DataService {
   constructor(public http: HttpClient) {
-    super(`${environment.apiUrl}/categories`, http);
+    super(`${environment.apiUrl}/products`, http);
   }
 
   getAllBySubCategorieId(id: any, headersObject = {}): Observable<any> {

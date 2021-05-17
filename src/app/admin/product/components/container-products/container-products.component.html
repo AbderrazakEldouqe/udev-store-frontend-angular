@@ -1,1 +1,7 @@
-<p>container-products works!</p>
+<app-list-products
+  [hidden]="formIsShow"
+  [products]="products"
+  (createEvent)="showForm()"
+  (editEvent)="edit($event)"
+  (deleteEvent)="delete($event)"
+></app-list-products>
