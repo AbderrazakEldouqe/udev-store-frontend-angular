@@ -3,27 +3,10 @@
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="pt-3 bg-white rounded-lg shadow">
     <div
-      class="
-        px-4
-        pt-4
-        pb-4
-        space-y-4
-        sm:px-6
-        lg:px-4
-        xl:px-6
-        sm:pb-6
-        lg:pb-4
-        xl:pb-6
-      "
+      class="px-4 pt-4 pb-4 space-y-4  sm:px-6 lg:px-4 xl:px-6 sm:pb-6 lg:pb-4 xl:pb-6"
     >
       <div
-        class="
-          pb-5
-          border-b border-gray-200
-          sm:flex
-          sm:items-center
-          sm:justify-between
-        "
+        class="pb-5 border-b border-gray-200  sm:flex sm:items-center sm:justify-between"
       >
         <h3 class="text-lg font-medium leading-6 text-gray-900">List</h3>
         <div class="mt-3 sm:mt-0 sm:ml-4">
@@ -33,15 +16,7 @@
                 class="relative flex items-stretch flex-grow focus-within:z-10"
               >
                 <div
-                  class="
-                    absolute
-                    inset-y-0
-                    left-0
-                    flex
-                    items-center
-                    pl-3
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
                 >
                   <svg
                     class="w-5 h-5 text-gray-400"
@@ -62,51 +37,17 @@
                   type="text"
                   name="email"
                   id="email"
-                  class="
-                    w-full
-                    py-2
-                    pl-10
-                    text-sm text-black
-                    placeholder-gray-500
-                    border border-gray-200
-                    rounded-none
-                    focus:border-light-blue-500
-                    focus:ring-1 focus:ring-light-blue-500
-                    focus:outline-none
-                    rounded-l-md
-                  "
+                  class="w-full py-2 pl-10 text-sm text-black placeholder-gray-500 border border-gray-200 rounded-none  focus:border-light-blue-500 focus:ring-1 focus:ring-light-blue-500 focus:outline-none rounded-l-md"
                   placeholder="Search"
                   [(ngModel)]="filter"
                 />
               </div>
               <button
                 (click)="create()"
-                class="
-                  relative
-                  inline-flex
-                  items-center
-                  px-4
-                  py-2
-                  -ml-px
-                  space-x-2
-                  text-sm
-                  font-medium
-                  text-gray-700
-                  border border-gray-300
-                  rounded-r-md
-                  bg-gray-50
-                  hover:bg-gray-100
-                  focus:outline-none
-                  focus:ring-1 focus:ring-indigo-500
-                  focus:border-indigo-500
-                "
+                class="relative inline-flex items-center px-4 py-2 -ml-px space-x-2 text-sm font-medium text-gray-700 border border-gray-300  rounded-r-md bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               >
                 <svg
-                  class="
-                    mr-2
-                    group-hover:text-light-blue-600
-                    text-light-blue-500
-                  "
+                  class="mr-2  group-hover:text-light-blue-600 text-light-blue-500"
                   width="12"
                   height="20"
                   fill="currentColor"
@@ -129,57 +70,34 @@
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
           <div
-            class="
-              overflow-hidden
-              border-b border-gray-200
-              shadow
-              sm:rounded-lg
-            "
+            class="overflow-hidden border-b border-gray-200 shadow  sm:rounded-lg"
           >
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    class="
-                      px-6
-                      py-3
-                      text-xs
-                      font-medium
-                      tracking-wider
-                      text-left text-gray-500
-                      uppercase
-                    "
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    class="
-                      px-6
-                      py-3
-                      text-xs
-                      font-medium
-                      tracking-wider
-                      text-left text-gray-500
-                      uppercase
-                    "
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
                   >
                     price
                   </th>
                   <th
                     scope="col"
-                    class="
-                      px-6
-                      py-3
-                      text-xs
-                      font-medium
-                      tracking-wider
-                      text-left text-gray-500
-                      uppercase
-                    "
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
                   >
                     qte
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase "
+                  >
+                    SubCategory Name
                   </th>
                   <th scope="col" class="relative px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -225,15 +143,13 @@
                       {{ prodduct?.quantity }}
                     </div>
                   </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">
+                      {{ prodduct?.subCategory?.name }}
+                    </div>
+                  </td>
                   <td
-                    class="
-                      px-6
-                      py-4
-                      text-sm
-                      font-medium
-                      text-right
-                      whitespace-nowrap
-                    "
+                    class="px-6 py-4 text-sm font-medium text-right  whitespace-nowrap"
                   >
                     <button
                       (click)="edit(prodduct)"
@@ -250,7 +166,7 @@
                   </td>
                 </tr>
                 <tr *ngIf="(products | filter: filter).length === 0">
-                  <td colspan="3" class="pt-4 text-center">
+                  <td colspan="5" class="pt-4 text-center">
                     No matching records found
                   </td>
                 </tr>

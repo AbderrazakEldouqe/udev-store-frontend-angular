@@ -5,5 +5,5 @@ export interface Product {
   image: String;
   price: number;
   quantity: number;
-  subCategorie: SubCategorie;
+  subCategory: SubCategorie;
 }

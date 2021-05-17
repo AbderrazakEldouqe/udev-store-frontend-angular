@@ -82,6 +82,13 @@
                 name="categorie"
                 formControlName="categorie"
                 class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                [ngClass]="{
+                  'border-green-500': form.get('categorie').valid,
+                  'border-red-500':
+                    form.get('categorie').invalid &&
+                    (form.get('categorie').touched ||
+                      form.get('categorie').dirty)
+                }"
               >
                 <option
                   *ngFor="let categorie of categories"
