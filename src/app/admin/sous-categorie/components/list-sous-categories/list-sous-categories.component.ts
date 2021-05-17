@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { SubCategorie } from 'src/app/_core/models/sub-categorie';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-sous-categories',
@@ -19,6 +20,14 @@ export class ListSousCategoriesComponent implements OnInit {
   @Output() createEvent = new EventEmitter();
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
+
+  config = {
+    id: 'custom',
+    itemsPerPage: 5,
+    currentPage: 1,
+    totalItems: this.subCategories.length,
+  };
+  filter = '';
   constructor() {}
 
   ngOnInit(): void {}
@@ -27,12 +36,12 @@ export class ListSousCategoriesComponent implements OnInit {
     this.createEvent.emit(true);
   }
 
-  edit(categorie: SubCategorie): void {
-    this.editEvent.emit(categorie);
+  edit(subCategorie: SubCategorie): void {
+    this.editEvent.emit(subCategorie);
   }
 
-  delete(categorie: SubCategorie): void {
-    /*Swal.fire({
+  delete(subCategorie: SubCategorie): void {
+    Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this imaginary file!',
       icon: 'warning',
@@ -41,11 +50,11 @@ export class ListSousCategoriesComponent implements OnInit {
       cancelButtonText: 'No, keep it',
     }).then((result) => {
       if (result.value) {
-        this.deleteEvent.emit(categorie);
+        this.deleteEvent.emit(subCategorie);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
-    });*/
+    });
   }
 
   trackById(index, item): any {
