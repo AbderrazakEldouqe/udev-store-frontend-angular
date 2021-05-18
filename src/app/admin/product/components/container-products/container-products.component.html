@@ -1,3 +1,11 @@
+<app-form-add-edit-products
+  [hidden]="!formIsShow"
+  [product]="selectedProduct"
+  (storeEvent)="store($event)"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-add-edit-products>
 <app-list-products
   [hidden]="formIsShow"
   [products]="products"
