@@ -52,7 +52,7 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
       name: new FormControl(null, [Validators.required]),
       categorie: new FormControl(null, [Validators.required]),
       image: new FormControl(
-        'https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80',
+        'https://www.e-spincorp.com/wp-content/uploads/2019/02/img_elektroniikka-e1550203651118.jpg',
         [Validators.required]
       ),
     });
@@ -75,6 +75,7 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
     console.log('val', object);
     this.storeEvent.emit(object);
     this.form.reset();
+    this.imageUrl = this.defaultImage;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -83,8 +84,9 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
         name: this.subCategorie.name,
         categorie: this.subCategorie.category.id,
         image:
-          'https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80',
+          'https://www.e-spincorp.com/wp-content/uploads/2019/02/img_elektroniikka-e1550203651118.jpg',
       });
+      this.imageUrl = this.subCategorie.image as string;
     }
   }
   update(): void {
@@ -103,6 +105,7 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
     this.updateEvent.emit(object);
     this.form.reset();
     this.subCategorie = null;
+    this.imageUrl = this.defaultImage;
   }
 
   onChange(file: File): void {
@@ -136,5 +139,6 @@ export class FormAddEditSousCategoriesComponent implements OnInit {
   back(): void {
     this.form.reset();
     this.backToListEvent.emit();
+    this.imageUrl = this.defaultImage;
   }
 }
