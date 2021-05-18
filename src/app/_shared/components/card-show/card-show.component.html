@@ -1,9 +1,6 @@
 <div>
   <a routerLink="/{{ path }}/{{ data?.id }}">
-    <img
-      class="hover:grow hover:shadow-lg"
-      src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-    />
+    <img class="hover:grow hover:shadow-lg" src="{{ data?.image }}" />
     <div class="flex items-center justify-center pt-3 text-center">
       <p class="text-center">{{ data?.name }}</p>
     </div>

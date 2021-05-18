@@ -15,7 +15,7 @@ export class ErrorServerService {
   constructor() {}
 
   getServerMessage(error: AppError | BadInputError | NotFoundError): string {
-    if (error.originalError === CustumErrorCode.UN_KNOW) {
+    if (error.originalError?.statusText === CustumErrorCode.UN_KNOW) {
       return 'Server is Down';
     }
     return error.originalError;
